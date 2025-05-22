@@ -1,0 +1,38 @@
+input_text = """
+When you need help with your travel plans (+1-(855-550-0971)), reaching a live representative at Delta Airlines can make all the difference...
+Contact Methods for Delta Airlines Customer Service
+We offer multiple ways (+1-(855-550-0971)) to get in touch—choose the one that works best for you:
+📞 By Phone
+Call (+1-(855-550-0971)) or 1-800-Delta Airlines (Live Person)...
+💬 Live Chat Support
+Don’t feel like calling? Use our live chat feature...
+"""  # Paste your full text here
+
+lines = input_text.strip().split('\n')
+
+html_lines = []
+for line in lines:
+    line = line.strip()
+    if not line:
+        continue
+    if line.endswith(":"):
+        html_lines.append(f"<h2>{line}</h2>")
+    elif line.startswith(("📞", "💬", "📱", "✉️", "📲")):
+        html_lines.append(f"<h3>{line}</h3>")
+    else:
+        html_lines.append(f"<p>{line}</p>")
+
+html_output = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delta Airlines Support Contact:A Ultimate Guide</title>
+</head>
+<body>
+{''.join(html_lines)}
+</body>
+</html>
+"""
+
+# Output result
+print(html_output)
